@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ data, cssConfig, showViewMore}) => {
+const ProductCard = ({ data }) => {
 
     const navigate = useNavigate();
   
@@ -22,21 +22,15 @@ const ProductCard = ({ data, cssConfig, showViewMore}) => {
     }
   
     return (
-        <Card variant='elevation' style={{
-            height: cssConfig.height,
-            width: cssConfig.width,
-            display: cssConfig.containerFlex.display,
-            flexDirection: cssConfig.containerFlex.flexDirection,
-            alignItems: cssConfig.containerFlex.alignItems,
-        }}>
+      <Card variant='outlined'>
           <CardContent>
           <CardMedia 
-            sx={{ height: cssConfig.imageHeight, width: cssConfig.imageWidth }} 
+            sx={{height:200}} 
             image={data.image} 
             title={data.title}
         />
   
-          <Typography variant='h6' component="div">
+          <Typography variant='h4' component="div">
             {data.title}
           </Typography>
   
@@ -52,13 +46,13 @@ const ProductCard = ({ data, cssConfig, showViewMore}) => {
   
           <CardActions>
             {
-              showViewMore && <Button onClick={navigateToDetail} variant='contained' color='primary'>Details</Button>
+              <Button onClick={navigateToDetail} variant='contained' color='primary'>Details</Button>
             }
           </CardActions>
   
           <CardActions>
             {
-              !showViewMore && <Button onClick={navigateToHomepage} variant='contained' color='primary'>Go Back</Button>
+              <Button onClick={navigateToHomepage} variant='contained' color='primary'>Go Back</Button>
             }
           </CardActions>
       </Card>

@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import PropTypes from 'prop-types'
+<<<<<<< HEAD
 import { Box, grid2Classes } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
 const URL = "https://fakestoreapi.com/products";
+=======
+>>>>>>> parent of 99fe265 (data fetched)
 
 const cssConfig = {
   height: "100%",
@@ -20,23 +22,8 @@ const cssConfig = {
 };
 
 const Homepage = props => {
-  const [productData, setProductData] = useState([])
-
-    const fetchAPI = async () => {
-        try {
-          const {data} = await axios.get(URL)
-          setProductData(data)
-        } catch (error) {
-          console.error(error);
-        }
-    }
-
-    useEffect(() =>{
-      fetchAPI()
-      
-  }, []);
-
   return (
+<<<<<<< HEAD
     <>
       <Box>
         {
@@ -47,6 +34,9 @@ const Homepage = props => {
       </Box>
     </>
     
+=======
+    <div>Homepage</div>
+>>>>>>> parent of 99fe265 (data fetched)
   )
 }
 
