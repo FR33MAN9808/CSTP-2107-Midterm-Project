@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data, cssConfig, showViewMore}) => {
 
     const navigate = useNavigate();
   
@@ -22,15 +22,21 @@ const ProductCard = ({ data }) => {
     }
   
     return (
-      <Card variant='outlined'>
+        <Card variant='elevation' style={{
+            height: cssConfig.height,
+            width: cssConfig.width,
+            display: cssConfig.containerFlex.display,
+            flexDirection: cssConfig.containerFlex.flexDirection,
+            alignItems: cssConfig.containerFlex.alignItems,
+        }}>
           <CardContent>
           <CardMedia 
-            sx={{height:200}} 
+            sx={{ height: cssConfig.imageHeight, width: cssConfig.imageWidth }} 
             image={data.image} 
             title={data.title}
         />
   
-          <Typography variant='h4' component="div">
+          <Typography variant='h6' component="div">
             {data.title}
           </Typography>
   
@@ -46,13 +52,13 @@ const ProductCard = ({ data }) => {
   
           <CardActions>
             {
-              <Button onClick={navigateToDetail} variant='contained' color='primary'>Details</Button>
+              showViewMore && <Button onClick={navigateToDetail} variant='contained' color='primary'>Details</Button>
             }
           </CardActions>
   
           <CardActions>
             {
-              <Button onClick={navigateToHomepage} variant='contained' color='primary'>Go Back</Button>
+              !showViewMore && <Button onClick={navigateToHomepage} variant='contained' color='primary'>Go Back</Button>
             }
           </CardActions>
       </Card>
